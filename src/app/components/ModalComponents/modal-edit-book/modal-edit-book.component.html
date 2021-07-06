@@ -1,0 +1,23 @@
+<div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Edição de Autor</h4>
+</div>
+<div class="modal-body">
+    <form (ngSubmit)="onSubmitBook()" [formGroup]="bookForm">
+        <div>
+            <div class="form-group">
+                <input type="text" class="form-control" formControlName="name" name="nome" id="usernameInput" aria-describedby="nome" placeholder="Nome" required />
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" formControlName="gender" name="genero" id="generoInput" aria-describedby="genero" placeholder="Gênero" required />
+            </div>
+            <div class="form-group">
+                <input type="number" class="form-control" formControlName="pages" name="pages" id="paginaInput" aria-describedby="pagina" placeholder="Páginas" required />
+            </div>
+            <select class="form-control" formControlName="author" name="autor" id="autor">
+                <option *ngFor="let a of authors" value="{{a._id}}" id="{{a._id}}">{{a.name}}</option>
+            </select>
+            <br>
+            <button type="submit" class="btn btn-outline-secondary">Editar</button>
+        </div>
+    </form>
+</div>

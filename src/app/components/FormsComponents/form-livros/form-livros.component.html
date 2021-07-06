@@ -1,0 +1,29 @@
+<br>
+<div class="container">
+    <br>
+    <div>
+        <img src="../../../assets/logo.png" class="brand_logo" alt="Logo">
+        <h1 class="text-center">Adicionar Livro</h1>
+    </div>
+    <br>
+    <div class="col-lg-4">
+        <form (ngSubmit)="onSubmitBook()" [formGroup]="bookForm">
+            <div>
+                <div class="form-group">
+                    <input type="text" class="form-control" formControlName="name" name="nome" id="usernameInput" aria-describedby="nome" placeholder="Nome" required />
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" formControlName="gender" name="genero" id="generoInput" aria-describedby="genero" placeholder="Gênero" required />
+                </div>
+                <div class="form-group">
+                    <input type="number" class="form-control" formControlName="pages" name="pages" id="paginaInput" aria-describedby="pagina" placeholder="Páginas" required />
+                </div>
+                <select class="form-control" formControlName="author" name="autor" id="autor">
+                    <option *ngFor="let a of authors" value="{{a._id}}" id="{{a._id}}">{{a.name}}</option>
+                </select>
+                <br>
+                <button type="submit" class="btn btn-outline-secondary">Adicionar</button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,26 @@
+<nav class="navbar navbar-expand navbar-light bg-light">
+    <img class="navbar-brand brand_logo" src="../favicon.ico"> <h2 *ngIf="isNotLogged()">My Little Library</h2>
+    <div *ngIf="!isNotLogged()" class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Livros
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" routerLink="/livros">Listar Livros</a>
+              <a class="dropdown-item" routerLink="/formLivro">Adicionar Livros</a>
+            </div>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Autores
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" routerLink="/autores">Listar Autores</a>
+              <a class="dropdown-item" routerLink="/formAutor">Adicionar Autores</a>
+            </div>
+          </li>
+        </ul>
+        <button (click)="deslogar()" class="btn btn-outline-danger my-2 my-sm-0" type="submit">Deslogar</button>
+    </div>
+</nav>

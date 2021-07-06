@@ -1,0 +1,20 @@
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nome</th>
+            <th scope="col">Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let a of authors">
+            <th scope="row">{{a._id}}</th>
+            <td>{{a.name}}</td>
+            <td><button (click)="editAuthor(a, content)" class="btn btn-outline-success">Editar</button><button (click)="removeAuthor(a)" class="btn btn-outline-danger">Remover</button></td>
+        </tr>
+    </tbody>
+</table>
+
+<ng-template #content let-modal>
+    <app-modal-edit-author [author]="selectedAuthor"></app-modal-edit-author>
+</ng-template>
