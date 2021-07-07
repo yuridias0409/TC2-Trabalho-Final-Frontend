@@ -15,8 +15,12 @@
             <td>{{b.name}}</td>
             <td>{{b.gender}}</td>
             <td>{{b.pages}}</td>
-            <td>{{b.author}}</td>
-            <td><button (click)="editBook(b)" class="btn btn-outline-success">Editar</button> <button (click)="removeBook(b)" class="btn btn-outline-danger">Remover</button></td>
+            <td>{{b.authorName}}</td>
+            <td><button (click)="editBook(b, content)" class="btn btn-outline-success">Editar</button> <button (click)="removeBook(b)" class="btn btn-outline-danger">Remover</button></td>
         </tr>
     </tbody>
 </table>
+
+<ng-template #content let-modal>
+    <app-modal-edit-book [book]="selectedBook"></app-modal-edit-book>
+</ng-template>

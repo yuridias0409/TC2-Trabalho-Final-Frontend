@@ -18,7 +18,6 @@ export class DatabaseServiceUser {
   }
 
   baseURL = "https://tc2-trabalho-final-api.herokuapp.com/api/";
-
   
   addUser(user): Observable<any> {
     return this.http.post(this.baseURL + 'user/', user, { observe: "response" });

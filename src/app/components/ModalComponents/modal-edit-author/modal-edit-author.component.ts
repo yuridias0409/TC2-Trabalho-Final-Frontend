@@ -23,7 +23,8 @@ export class ModalEditAuthorComponent implements OnInit {
       this.databaseServiceAuthor.updateAuthor(this.author).subscribe(res => {
         if(res.ok){
           //Redirecionar para listagem
-          this.router.navigate(['/autores']);
+          alert('Autor editado com sucesso!')
+          location.href = location.href;
         } else{
           alert('Não foi possível efetuar a edição do autor')
         }

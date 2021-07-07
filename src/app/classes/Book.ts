@@ -7,6 +7,7 @@ export interface Book {
     pages: number,
     author: string,
     userid: string,
+    authorName: string,
     createdAt?: string,
     updatedAt?: string,
     _v?: number

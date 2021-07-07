@@ -14,7 +14,7 @@ import { Author } from 'src/app/classes/Author';
 })
 export class ModalEditBookComponent implements OnInit {
 
-  constructor(private router: Router, private DatabaseServiceBook: DatabaseServiceBook, private DatabaseServiceAuthor: DatabaseServiceAuthor) { }
+  constructor(private router: Router, private databaseServiceBook: DatabaseServiceBook, private databaseServiceAuthor: DatabaseServiceAuthor) { }
 
   @Input() book: Book;
   user : User;
@@ -28,11 +28,16 @@ export class ModalEditBookComponent implements OnInit {
   
   onSubmitBook(){
     if(!this.bookForm.invalid){
-      this.book = this.bookForm.value;
-      this.DatabaseServiceBook.updateBook(this.book).subscribe(res => {
+      //Seta dados do livro
+      this.book.name = this.bookForm.value.name;
+      this.book.gender = this.bookForm.value.gender;
+      this.book.pages = this.bookForm.value.pages;
+      this.book.author = this.bookForm.value.author;
+
+      this.databaseServiceBook.updateBook(this.book).subscribe(res => {
         if(res.ok){
-          //Redirecionar para listagem
-          this.router.navigate(['/livros']);
+          alert('Livro editado com sucesso!')
+          location.href = location.href;
         } else{
           alert('Não foi possível efetuar a edição do livro')
         }
@@ -44,9 +49,12 @@ export class ModalEditBookComponent implements OnInit {
 
   ngOnInit(): void {
     //Recupera todos os Autores
-    this.DatabaseServiceAuthor.getAllAuthor(this.getUser()).subscribe(res => {
-      this.authors = res;
+    this.databaseServiceAuthor.getAllAuthor(this.getUser()).subscribe(res => {
+      this.authors = res.data.map(function(e){
+        return {"_id": e.id, "name": e.nome, "userid": e.usuario}
+      });
     });
+
 
     this.bookForm = new FormGroup({
       name: new FormControl(this.book.name, Validators.required),

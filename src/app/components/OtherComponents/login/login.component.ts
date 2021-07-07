@@ -63,7 +63,7 @@ export class LoginComponent implements OnInit {
             sessionStorage.setItem('user', JSON.stringify(res.body.data[0]))
             alert('Registro realizado com sucesso!')
             this.user = null;
-            this.router.navigate(['/home']);
+            location.href = location.href + '/home';
           } else {
             alert('Não foi possível efetuar o Registro')
           }

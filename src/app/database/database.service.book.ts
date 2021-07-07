@@ -32,6 +32,7 @@ export class DatabaseServiceBook {
   }
 
   updateBook(book) : Observable<any> {
+    console.log(book);
     return this.http.put(this.baseURL + 'book/' + book._id, book, { observe: "response"})
   }
   
