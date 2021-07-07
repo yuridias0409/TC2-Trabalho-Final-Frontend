@@ -4,6 +4,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { Validators } from '@angular/forms';
 import { User } from '../../../classes/User';
 import { Router } from '@angular/router';
+import {Md5} from 'ts-md5/dist/md5';
 
 @Component({
   selector: 'app-login',
@@ -32,6 +33,7 @@ export class LoginComponent implements OnInit {
   onSubmitLogin() {
     if (!this.loginForm.invalid) {
       this.user = this.loginForm.value;
+      this.user.password = Md5.hashStr(this.user.password);
       this.databaseService.loginUser(this.user).subscribe(res => {
         if (res.ok) {
           res.body.data = res.body.data.map(function (e) {
@@ -55,6 +57,7 @@ export class LoginComponent implements OnInit {
       if (this.registerForm.value.password == this.registerForm.value.confirmPassword) {
         //Seta usuário
         this.user = this.registerForm.value;
+        this.user.password = Md5.hashStr(this.user.password);
         this.databaseService.addUser(this.user).subscribe(res => {
           if (res.ok) {
             res.body.data = res.body.data.map(function (e) {
