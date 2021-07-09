@@ -117,6 +117,10 @@
               "devServerTarget": "TC2Frontend:serve:production"
             }
           }
+        },
+        "deploy": {
+          "builder": "angular-cli-ghpages:deploy",
+          "options": {}
         }
       }
     }
